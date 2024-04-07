@@ -203,6 +203,7 @@ class _BluetoothDevState extends State<BluetoothDev> {
     isEnabled=isEnable!;
   }
   bool isEnabled=false;
+
   @override
   Widget build(BuildContext context) {
 

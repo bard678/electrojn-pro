@@ -45,6 +45,7 @@ dev_dependencies:
     sdk: flutter
 flutter_icons:
   android: true
+  windows: true
   remove_alpha_ios: true
   ios: true
   image_path: "assets/npn_logo.png"
