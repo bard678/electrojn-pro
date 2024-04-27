@@ -3,20 +3,14 @@ import 'dart:convert';
 
 import 'package:bluetooth/settings.dart';
 import 'package:bluetooth/themes.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:bluetooth/firebase_options.dart';
-import 'package:http/http.dart'as http;
 
 import 'package:get/get.dart';
-
- String url="http://192.168.43.116";
 int index=0;
 bool isDark0=false;
 class ThemeController extends GetxController {
@@ -38,20 +32,6 @@ class Controller extends GetxController{
 
 void main()async {
   await GetStorage.init();
-  await WidgetsFlutterBinding.ensureInitialized();
-
- if(!kIsWeb){
-   if( defaultTargetPlatform!=TargetPlatform.android){
-     await Firebase.initializeApp(
-       options: DefaultFirebaseOptions.currentPlatform,
-     );
-   }
-   else if(kIsWeb){
-     await Firebase.initializeApp(
-       options: DefaultFirebaseOptions.currentPlatform,
-     );
-   }
- }
   runApp(const MyApp());
 }
 
@@ -63,8 +43,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -225,18 +203,6 @@ class _BluetoothDevState extends State<BluetoothDev> {
     isEnabled=isEnable!;
   }
   bool isEnabled=false;
-  void postRequest(String endpoint)async{
-    final uri=Uri.parse(url+endpoint);
-   try{
-     final response=await http.post(uri);
-
-   }catch(e){
-     Get.snackbar("", "",titleText: Center(child: Text("Failed",style: TextStyle(fontStyle: FontStyle.italic,fontSize: 23,color: Colors.red),)),messageText: Center(child: Text("Local connection failed",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),)));
-     print(e);
-
-   }
-
-  }
   @override
   Widget build(BuildContext context) {
 
@@ -258,12 +224,10 @@ class _BluetoothDevState extends State<BluetoothDev> {
                           if(d1){
                             //TODO send via bluetooth
                             sendMesseges("Stop");
-                            postRequest("/led0/off");
                             d1=false;
                           }else {
                             d1 = true;
                             sendMesseges("a");
-                            postRequest("/led0/on");
                           }
                         });},
                       child: Container(
@@ -277,13 +241,8 @@ class _BluetoothDevState extends State<BluetoothDev> {
                     ),
                     GestureDetector(
                       onTap: (){setState(() {
-                        if(d2){
-                          postRequest("/led1/off");
-                          d2=false;}else {
-                            d2 = true;
-                            postRequest("/led1/on");
-                          }
-                        });},
+                        if(d2){d2=false;}else d2=true;
+                      });},
                       child: Container(
                         child: Center(child: Text(d2?"ON":"OFF",style: TextStyle(fontSize: 30,color:d2? Colors.green:Colors.red,fontWeight: FontWeight.bold),)),
                         width: 150,
@@ -300,15 +259,9 @@ class _BluetoothDevState extends State<BluetoothDev> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     GestureDetector(
-                      onTap: ()async{setState(() {
-                        if(d3){
-                          postRequest("/led2/off");
-                          d3=false;
-                        }else {
-                         postRequest("/led2/on");
-                            d3 = true;
-                          }
-                        });},
+                      onTap: (){setState(() {
+                        if(d3){d3=false;}else d3=true;
+                      });},
                       child: Container(
                         child: Center(child: Text(d3?"ON":"OFF",style: TextStyle(fontSize: 30,color:d3? Colors.green:Colors.red,fontWeight: FontWeight.bold),)),
                         width: 150,
@@ -320,13 +273,8 @@ class _BluetoothDevState extends State<BluetoothDev> {
                     ),
                     GestureDetector(
                       onTap: (){setState(() {
-                        if(d4){
-                          postRequest("/led3/off");
-                          d4=false;}else {
-                          postRequest("/led3/on");
-                            d4 = true;
-                          }
-                        });},
+                        if(d4){d4=false;}else d4=true;
+                      });},
                       child: Container(
                         child: Center(child: Text(d4?"ON":"OFF",style: TextStyle(fontSize: 30,color:d4? Colors.green:Colors.red,fontWeight: FontWeight.bold),)),
                         width: 150,
@@ -391,11 +339,8 @@ class _BluetoothDevState extends State<BluetoothDev> {
               GestureDetector(
                 onTap: (){
                   setState(() {
-                    if(lamp1){
-                      postRequest("/led4/off");
-                      lamp1=false;}
+                    if(lamp1){lamp1=false;}
                     else{
-                      postRequest("/led4/on");
                       lamp1=true;
                     }
                   });
@@ -413,11 +358,8 @@ class _BluetoothDevState extends State<BluetoothDev> {
               GestureDetector(
                 onTap: (){
                   setState(() {
-                    if(lamp2){
-                      postRequest("/led5/off");
-                      lamp2=false;}
+                    if(lamp2){lamp2=false;}
                     else{
-                      postRequest("/led5/on");
                       lamp2=true;
                     }
                   });
@@ -440,11 +382,8 @@ class _BluetoothDevState extends State<BluetoothDev> {
               GestureDetector(
                 onTap: (){
                   setState(() {
-                    if(tv){
-                      postRequest("/led6/off");
-                      tv=false;}
+                    if(tv){tv=false;}
                     else{
-                      postRequest("/led6/on");
                       tv=true;
                     }
                   });
@@ -462,11 +401,8 @@ class _BluetoothDevState extends State<BluetoothDev> {
               GestureDetector(
                 onTap: (){
                   setState(() {
-                    if(air){
-                      postRequest("/led7/off");
-                      air=false;}
+                    if(air){air=false;}
                     else{
-                      postRequest("/led7/on");
                       air=true;
                     }
                   });
