@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "101994278872",
+    "firebase_url": "https://esp82266-31379-default-rtdb.firebaseio.com",
+    "project_id": "esp82266-31379",
+    "storage_bucket": "esp82266-31379.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101994278872:android:a6e53503a69a0e34754cad",
+        "android_client_info": {
+          "package_name": "com.example.g"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXFshRhZDeI1No2o6Z02qgRYdaLyShPKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101994278872:android:6c55c89ac875a8fa754cad",
+        "android_client_info": {
+          "package_name": "com.janada.electrojn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXFshRhZDeI1No2o6Z02qgRYdaLyShPKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101994278872:android:937732fbee7c142a754cad",
+        "android_client_info": {
+          "package_name": "com.jnc.zypherion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXFshRhZDeI1No2o6Z02qgRYdaLyShPKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
